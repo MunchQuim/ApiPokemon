@@ -1,9 +1,13 @@
 const POKE_ID_MIN = 1;
 const POKE_ID_MAX = 151;
 const LINK = "https://pokeapi.co/api/v2/pokemon/";
-const IMG_LINK = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
+const IMG_LINK = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
+const TYPE_LINK = "https://pokeapi.co/api/v2/type/";
 
-
+const TYPE_ARRAY = ["./img/Tipo_normal_icono_EP.png","./img/Tipo_lucha_icono_EP.png","./img/Tipo_volador_icono_EP.png","./img/Tipo_veneno_icono_EP.png",
+"./img/Tipo_tierra_icono_EP.png","./img/Tipo_roca_icono_EP.png","./img/Tipo_bicho_icono_EP.png","./img/Tipo_fantasma_icono_EP.png","./img/Tipo_acero_icono_EP.png",
+"./img/Tipo_fuego_icono_EP.png","./img/Tipo_agua_icono_EP.png","./img/Tipo_planta_icono_EP.png","./img/Tipo_eléctrico_icono_EP.png","./img/Tipo_psíquico_icono_EP.png",
+"./img/Tipo_hielo_icono_EP.png","./img/Tipo_dragón_icono_EP.png","./img/Tipo_siniestro_icono_EP.png","./img/Tipo_hada_icono_EP.png"];
 
 makeCards ();
 //rellena las cartas//
@@ -21,9 +25,27 @@ async function getPokemon (id){
     
     //añade los tipos como class//
     for (let index = 0; index < DATA.types.length; index++) {
-        POKE_CARD.classList.add(""+DATA.types[index].type.name+"");    
+        //obtener la id del tipo//
+        const TYPE_RESPONSE = await fetch (DATA.types[index].type.url)
+        const DATA_TYPE = await TYPE_RESPONSE.json();
+        //------//
+
+        //añade el tipo a la clase//
+        POKE_CARD.classList.add(""+DATA.types[index].type.name+"");
+        //------// 
+
+        //añade tipos a la carta//              
+        let pokeType = document.createElement("img");
+        pokeType.setAttribute("src", TYPE_ARRAY[(DATA_TYPE.id)-1]);
+        pokeType.setAttribute("alt", "imagen del tipo "+DATA.types[index].type.name);
+        pokeType.setAttribute("class","h-4 w-4")
+        //------// 
+        
+        document.getElementById("typeContainer"+id).appendChild(pokeType);
     }
     
+
+
 }
 //---------------------------------//
 
@@ -37,7 +59,7 @@ async function makeCards (){
 
         let nameDiv = document.createElement("div");
         nameDiv.setAttribute("id", "name"+index);
-        nameDiv.setAttribute("class", "h-4 text-center");
+        nameDiv.setAttribute("class", "name");
         nameDiv.textContent = "";
 
         let img = document.createElement("img");
@@ -48,12 +70,17 @@ async function makeCards (){
 
         let numberDiv = document.createElement("div");
         numberDiv.setAttribute("id", "number"+index);
-        numberDiv.setAttribute("class", "h-4 text-right");
+        numberDiv.setAttribute("class", "num");
         numberDiv.textContent = "";
+
+        let typeContainer = document.createElement("div");
+        typeContainer.setAttribute("class","flex");
+        typeContainer.setAttribute("id","typeContainer"+index);
 
         newDiv.appendChild(nameDiv);
         newDiv.appendChild(img);
-        newDiv.appendChild(numberDiv);
+        newDiv.appendChild(typeContainer);
+        typeContainer.appendChild(numberDiv);
 
         document.getElementById("card_container").appendChild(newDiv);
 
@@ -80,3 +107,62 @@ function search() {
     }
 }
 //---------------------------------//
+
+/* switch (DATA.types[index].type.name) {
+    case value:
+        
+        break;
+    case value:
+        
+        break;
+    case value:
+        
+        break;
+    case value:
+        
+        break;
+    case value:
+        
+        break;
+    case value:
+        
+        break;
+    case value:
+        
+        break;
+    case value:
+        
+        break;
+    case value:
+        
+        break;
+    case value:
+        
+        break;
+    case value:
+        
+        break;
+    case value:
+        
+        break;
+    case value:
+        
+        break;
+    case value:
+        
+        break;
+    case value:
+        
+        break;
+    case value:
+        
+        break;
+    case value:
+        
+        break;
+    case value:
+        
+        break;
+
+        
+} */
