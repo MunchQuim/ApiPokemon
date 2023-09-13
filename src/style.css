@@ -3,17 +3,36 @@ min-width: 9rem;
 flex-grow: 1;
 max-width: 10rem;
 transition: scale 0.3s ease;
+display: flex;
+flex-direction: column;
+height: 10rem;
+justify-content: space-between;
+--tw-bg-opacity: 1;
+background-color: rgb(251 146 60 / var(--tw-bg-opacity));
+border-radius: 0.25rem;
+padding:0.5rem ;
+margin:0.5rem ;
 }
 
-/* #card_container>*:hover{
+#card_container>*:hover{
     scale: 1.1;
-    box-shadow: 1px 2px 2px 2px rgba(0, 0, 0, 0.4);;
-} */
+    box-shadow: 1px 2px 2px 2px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+
 
 #card_container{
     justify-content: center;
 } 
 
+#type_grid>*{
+    transition: all 0.2s ease;
+}
+#type_grid>*:hover{
+    scale: 1.1;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
 #browser_container{
     align-items: center;
     justify-content: space-between;

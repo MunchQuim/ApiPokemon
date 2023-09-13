@@ -1,5 +1,5 @@
 const POKE_ID_MIN = 1;
-const POKE_ID_MAX = 151;
+const POKE_ID_MAX = 649;
 const LINK = "https://pokeapi.co/api/v2/pokemon/";
 const IMG_LINK = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
 const TYPE_LINK = "https://pokeapi.co/api/v2/type/";
@@ -38,7 +38,7 @@ async function getPokemon (id){
         let pokeType = document.createElement("img");
         pokeType.setAttribute("src", TYPE_ARRAY[(DATA_TYPE.id)-1]);
         pokeType.setAttribute("alt", "imagen del tipo "+DATA.types[index].type.name);
-        pokeType.setAttribute("class","h-4 w-4")
+        pokeType.setAttribute("class","h-4 w-4 ")
         //------// 
         
         document.getElementById("typeContainer"+id).appendChild(pokeType);
@@ -54,7 +54,7 @@ async function makeCards (){
     for (let index = POKE_ID_MIN; index <= POKE_ID_MAX; index++) { 
 
         let newDiv = document.createElement("div");
-        newDiv.setAttribute("class", "flex flex-col h-40 justify-between bg-orange-400 rounded p-2 m-2");
+        newDiv.setAttribute("class", "");
         newDiv.setAttribute("id", "card"+index)
 
         let nameDiv = document.createElement("div");
@@ -90,79 +90,52 @@ async function makeCards (){
 }
 //---------------------------------//
 
+//evento de tipos//
+let searchTypeArray = [];
+function selectType(id){
+    
+    if (!searchTypeArray.includes(id)) {
+        
+        let typeDiv = document.getElementById(id);
+        typeDiv.style.scale = "1.2"
+        searchTypeArray.push(id);
+    }else{
+        let typeDiv = document.getElementById(id);
+        typeDiv.style.scale = "1"
+
+        let newSearchTypeArray = searchTypeArray.filter(function(elemento) {
+            return elemento !== id;
+          });//posible primera cosa a cambiar si no funciona
+        searchTypeArray = newSearchTypeArray;
+    }
+   search();
+
+}
+/*parte 1 marcar la imagen*/
+
+//---------------------------------//
+
 //evento de busqueda//
 function search() {
     const searchTerm = document.getElementById("browser").value.toLowerCase(); // Obtén el valor del input de búsqueda en minúsculas
     
+    
     for (let index = POKE_ID_MIN; index <= POKE_ID_MAX; index++) {
         const card = document.getElementById("card" + index);
         const cardName = document.getElementById("name" + index).textContent.toLowerCase();
+        const cardClasses = card.className.split(" "); // Divide las clases en un array
+        console.log(card.className);
+        console.log(searchTypeArray);
 
         // Comprueba si el nombre de la tarjeta contiene el término de búsqueda
-        if (cardName.includes(searchTerm)) {
+        
+        if (cardName.includes(searchTerm)&&(searchTypeArray.some(tipo =>card.className.includes(tipo))||searchTypeArray.length==0)) {
             card.style.display = "flex"; // Muestra la tarjeta si coincide con la búsqueda
         } else {
             card.style.display = "none"; // Oculta la tarjeta si no coincide con la búsqueda
         }
+        
     }
 }
 //---------------------------------//
-
-/* switch (DATA.types[index].type.name) {
-    case value:
-        
-        break;
-    case value:
-        
-        break;
-    case value:
-        
-        break;
-    case value:
-        
-        break;
-    case value:
-        
-        break;
-    case value:
-        
-        break;
-    case value:
-        
-        break;
-    case value:
-        
-        break;
-    case value:
-        
-        break;
-    case value:
-        
-        break;
-    case value:
-        
-        break;
-    case value:
-        
-        break;
-    case value:
-        
-        break;
-    case value:
-        
-        break;
-    case value:
-        
-        break;
-    case value:
-        
-        break;
-    case value:
-        
-        break;
-    case value:
-        
-        break;
-
-        
-} */
+/* searchTypeArray.some(tipo =>card.className.includes(tipo)) */
