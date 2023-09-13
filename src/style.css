@@ -13,3 +13,18 @@ transition: scale 0.3s ease;
 #card_container{
     justify-content: center;
 } 
+
+#browser_container{
+    align-items: center;
+    justify-content: space-between;
+}
+#type_grid{
+    display: flex;
+    flex-wrap: wrap;
+    width: 10rem;
+}
+#type_grid>*{
+height: 1.5rem;
+width: 1.5rem;
+margin: 1px;
+}
