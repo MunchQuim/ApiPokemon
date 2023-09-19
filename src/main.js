@@ -1,15 +1,15 @@
 const POKE_ID_MIN = 1;
-const POKE_ID_MAX = 905;
+const POKE_ID_MAX = 809;
 let counter = POKE_ID_MAX;
 
 const LINK = "https://pokeapi.co/api/v2/pokemon/";
 const IMG_LINK = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
 const TYPE_LINK = "https://pokeapi.co/api/v2/type/";
 
-const TYPE_ARRAY = ["./img/Tipo_normal_icono_EP.png","./img/Tipo_lucha_icono_EP.png","./img/Tipo_volador_icono_EP.png","./img/Tipo_veneno_icono_EP.png",
-"./img/Tipo_tierra_icono_EP.png","./img/Tipo_roca_icono_EP.png","./img/Tipo_bicho_icono_EP.png","./img/Tipo_fantasma_icono_EP.png","./img/Tipo_acero_icono_EP.png",
-"./img/Tipo_fuego_icono_EP.png","./img/Tipo_agua_icono_EP.png","./img/Tipo_planta_icono_EP.png","./img/Tipo_eléctrico_icono_EP.png","./img/Tipo_psíquico_icono_EP.png",
-"./img/Tipo_hielo_icono_EP.png","./img/Tipo_dragón_icono_EP.png","./img/Tipo_siniestro_icono_EP.png","./img/Tipo_hada_icono_EP.png"];
+const TYPE_ARRAY = ["./src/img/Tipo_normal_icono_EP.png","./src/img/Tipo_lucha_icono_EP.png","./src/img/Tipo_volador_icono_EP.png","./src/img/Tipo_veneno_icono_EP.png",
+"./src/img/Tipo_tierra_icono_EP.png","./src/img/Tipo_roca_icono_EP.png","./src/img/Tipo_bicho_icono_EP.png","./src/img/Tipo_fantasma_icono_EP.png","./src/img/Tipo_acero_icono_EP.png",
+"./src/img/Tipo_fuego_icono_EP.png","./src/img/Tipo_agua_icono_EP.png","./src/img/Tipo_planta_icono_EP.png","./src/img/Tipo_eléctrico_icono_EP.png","./src/img/Tipo_psíquico_icono_EP.png",
+"./src/img/Tipo_hielo_icono_EP.png","./src/img/Tipo_dragón_icono_EP.png","./src/img/Tipo_siniestro_icono_EP.png","./src/img/Tipo_hada_icono_EP.png"];
 
 const TYPE_MAX_SIZE = "1.15";
 const TYPE_MIN_SIZE = "0.85";
@@ -173,7 +173,7 @@ let loadingScreen = document.getElementById("loadingScreen");
 //Crear pantalla de carga//
 function makeLS() {
     document.body.style.overflow = "hidden";
-    document.getElementById("lsImg").src = "./img/pokeball.PNG"; //redundante pero por si algun dia quiero que pueda haber varias imagenes de carga aleatorias 
+    document.getElementById("lsImg").src = "./src/img/pokeball.PNG"; //redundante pero por si algun dia quiero que pueda haber varias imagenes de carga aleatorias 
 }
 //---------------------------------//
 

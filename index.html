@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="./fonts/Pokemon Solid.ttf"> -->
+    <link href="./dist/output.css" type="text/css" rel="stylesheet">
+    <link href="./src/style.css" type="text/css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div id="loadingScreen">
+        <img src="./src/img/pokeball.PNG" alt="imagen pantalla de carga" id="lsImg">
+    </div>
+    <div id="browser_container" class="h-20 p-2 bg-orange-200 mb-2 mr-4 ml-4 rounded flex">
+        <input oninput="search()" type="search" name="" id="browser" class="h-8 rounded border">
+        <div id="title">PokeApi</div>
+        <div id="type_grid">
+            <img onclick="selectType('steel')" id="steel" src="./src/img/Tipo_acero_icono_EP.png" alt="tipo acero">
+            <img onclick="selectType('water')" id="water" src="./src/img/Tipo_agua_icono_EP.png" alt="tipo agua">
+            <img onclick="selectType('bug')" id="bug" src="./src/img/Tipo_bicho_icono_EP.png" alt="tipo bicho">
+            <img onclick="selectType('dragon')" id="dragon" src="./src/img/Tipo_dragón_icono_EP.png" alt="tipo dragon">
+            <img onclick="selectType('electric')" id="electric" src="./src/img/Tipo_eléctrico_icono_EP.png"
+                alt="tipo electrico">
+            <img onclick="selectType('ghost')" id="ghost" src="./src/img/Tipo_fantasma_icono_EP.png" alt="tipo fantasma">
+            <img onclick="selectType('fire')" id="fire" src="./src/img/Tipo_fuego_icono_EP.png" alt="tipo fuego">
+            <img onclick="selectType('fairy')" id="fairy" src="./src/img/Tipo_hada_icono_EP.png" alt="tipo hada">
+            <img onclick="selectType('ice')" id="ice" src="./src/img/Tipo_hielo_icono_EP.png" alt="tipo hielo">
+            <img onclick="selectType('fighting')" id="fighting" src="./src/img/Tipo_lucha_icono_EP.png" alt="tipo lucha">
+            <img onclick="selectType('normal')" id="normal" src="./src/img/Tipo_normal_icono_EP.png" alt="tipo normal">
+            <img onclick="selectType('grass')" id="grass" src="./src/img/Tipo_planta_icono_EP.png" alt="tipo planta">
+            <img onclick="selectType('psychic')" id="psychic" src="./src/img/Tipo_psíquico_icono_EP.png"
+                alt="tipo psiquico">
+            <img onclick="selectType('rock')" id="rock" src="./src/img/Tipo_roca_icono_EP.png" alt="tipo roca">
+            <img onclick="selectType('dark')" id="dark" src="./src/img/Tipo_siniestro_icono_EP.png" alt="tipo siniestro">
+            <img onclick="selectType('ground')" id="ground" src="./src/img/Tipo_tierra_icono_EP.png" alt="tipo tierra">
+            <img onclick="selectType('poison')" id="poison" src="./src/img/Tipo_veneno_icono_EP.png" alt="tipo veneno">
+            <img onclick="selectType('flying')" id="flying" src="./src/img/Tipo_volador_icono_EP.png" alt="tipo volador">
+        </div>
+    </div>
+    <div id="card_container" class="flex flex-wrap items-center p-2"></div>
+    <script src="./src/main.js"></script>
+</body>
+
+<footer>
+    <p>Author: Joaquim Pineda Sotés.</p>
+    <p>Follow me on:</p>
+    <div class="flex">
+        <p><a href="https://www.linkedin.com/in/joaquimpineda/" target="_blank"><img class="logo" src="./src/img/linkedin.png"
+                    alt="linkedin image"></a></p>
+        <p><a href="https://github.com/MunchQuim?tab=repositories" target="_blank"><img class="logo" src="./src/img/github-mark.png"
+                    alt="github image"></a></p>
+    </div>
+
+</footer>
+
+</html>
