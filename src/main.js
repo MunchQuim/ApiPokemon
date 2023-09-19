@@ -1,5 +1,5 @@
 const POKE_ID_MIN = 1;
-const POKE_ID_MAX = 649;
+const POKE_ID_MAX = 905;
 let counter = POKE_ID_MAX;
 
 const LINK = "https://pokeapi.co/api/v2/pokemon/";
@@ -28,7 +28,7 @@ async function getPokemon (id){
 
     const RESPUESTA = await fetch (LINK+id)
     const DATA = await RESPUESTA.json();
-    POKE_NAME.innerText = DATA.forms[0].name;
+    POKE_NAME.innerText = DATA.forms[0].name.charAt(0).toUpperCase() + DATA.forms[0].name.slice(1);
     POKE_PICTURE.src = DATA.sprites.front_default;
     POKE_NUM.innerText = DATA.id;
     
