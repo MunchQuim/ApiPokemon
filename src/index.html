@@ -10,7 +10,10 @@
 </head>
 
 <body>
-    <div id="browser_container" class="h-20 p-2 bg-orange-200 mt-2 mb-2 mr-4 ml-4 rounded flex">
+    <div id="loadingScreen">
+        <img src="./img/pokeball.PNG" alt="imagen pantalla de carga" id="lsImg">
+    </div>
+    <div id="browser_container" class="h-20 p-2 bg-orange-200 mb-2 mr-4 ml-4 rounded flex">
         <input oninput="search()" type="search" name="" id="browser" class="h-8 rounded border">
         <div id="type_grid">
             <img onclick="selectType('steel')" id="steel" src="./img/Tipo_acero_icono_EP.png" alt="tipo acero"> 
