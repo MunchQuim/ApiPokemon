@@ -1,5 +1,6 @@
 const POKE_ID_MIN = 1;
 const POKE_ID_MAX = 649;
+
 const LINK = "https://pokeapi.co/api/v2/pokemon/";
 const IMG_LINK = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
 const TYPE_LINK = "https://pokeapi.co/api/v2/type/";
@@ -8,6 +9,9 @@ const TYPE_ARRAY = ["./img/Tipo_normal_icono_EP.png","./img/Tipo_lucha_icono_EP.
 "./img/Tipo_tierra_icono_EP.png","./img/Tipo_roca_icono_EP.png","./img/Tipo_bicho_icono_EP.png","./img/Tipo_fantasma_icono_EP.png","./img/Tipo_acero_icono_EP.png",
 "./img/Tipo_fuego_icono_EP.png","./img/Tipo_agua_icono_EP.png","./img/Tipo_planta_icono_EP.png","./img/Tipo_eléctrico_icono_EP.png","./img/Tipo_psíquico_icono_EP.png",
 "./img/Tipo_hielo_icono_EP.png","./img/Tipo_dragón_icono_EP.png","./img/Tipo_siniestro_icono_EP.png","./img/Tipo_hada_icono_EP.png"];
+
+const TYPE_MAX_SIZE = "1.15";
+const TYPE_MIN_SIZE = "0.85";
 
 makeCards ();
 //rellena las cartas//
@@ -84,7 +88,7 @@ async function makeCards (){
 
         document.getElementById("card_container").appendChild(newDiv);
 
-        /* await */ getPokemon(index);
+        await getPokemon(index); // quitar este await puede hacer que vaya mas rapido?
         
     }
 }
@@ -93,20 +97,32 @@ async function makeCards (){
 //evento de tipos//
 let searchTypeArray = [];
 function selectType(id){
-    
-    if (!searchTypeArray.includes(id)) {
-        
-        let typeDiv = document.getElementById(id);
-        typeDiv.style.scale = "1.2"
-        searchTypeArray.push(id);
-    }else{
-        let typeDiv = document.getElementById(id);
-        typeDiv.style.scale = "1"
+    let allTypes = document.getElementById("type_grid").children;
+    if (!searchTypeArray.includes(id)) {        
 
+        searchTypeArray.push(id);
+        for (let index = 0; index < allTypes.length; index++) {
+            if (!searchTypeArray.includes(allTypes[index].id)) {
+                allTypes[index].style.scale = TYPE_MIN_SIZE;
+            }else{
+                allTypes[index].style.scale = TYPE_MAX_SIZE;
+            }            
+        }
+    }else{
+     
         let newSearchTypeArray = searchTypeArray.filter(function(elemento) {
             return elemento !== id;
-          });//posible primera cosa a cambiar si no funciona
+          });
         searchTypeArray = newSearchTypeArray;
+
+        if (searchTypeArray.length==0) {//regresa al tamaño original si resulta que está vacia
+            for (let index = 0; index < allTypes.length; index++) {
+                allTypes[index].style.scale = "1";                
+            }
+        }else{
+            document.getElementById(id).style.scale = TYPE_MIN_SIZE;
+        }
+
     }
    search();
 
