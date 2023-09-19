@@ -84,7 +84,7 @@ async function makeCards (){
 
         document.getElementById("card_container").appendChild(newDiv);
 
-        await getPokemon(index);
+        /* await */ getPokemon(index);
         
     }
 }
@@ -123,13 +123,12 @@ function search() {
     for (let index = POKE_ID_MIN; index <= POKE_ID_MAX; index++) {
         const card = document.getElementById("card" + index);
         const cardName = document.getElementById("name" + index).textContent.toLowerCase();
-        const cardClasses = card.className.split(" "); // Divide las clases en un array
         console.log(card.className);
         console.log(searchTypeArray);
 
         // Comprueba si el nombre de la tarjeta contiene el término de búsqueda
         
-        if (cardName.includes(searchTerm)&&(searchTypeArray.some(tipo =>card.className.includes(tipo))||searchTypeArray.length==0)) {
+        if (cardName.includes(searchTerm)&&(searchTypeArray.some(tipo =>card.className.includes(tipo))||searchTypeArray.length==0)) {// condicional si incluye algo del buscador y alguno de los tipos
             card.style.display = "flex"; // Muestra la tarjeta si coincide con la búsqueda
         } else {
             card.style.display = "none"; // Oculta la tarjeta si no coincide con la búsqueda
